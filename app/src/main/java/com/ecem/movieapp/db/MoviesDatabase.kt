@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.ecem.movieapp.data.ResultModel
 import com.ecem.movieapp.data.model.Movies
 
-@Database(entities = [Movies::class], version = 1, exportSchema = false)
+@Database(entities = [Movies::class, ResultModel::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class MoviesDatabase: RoomDatabase() {
 

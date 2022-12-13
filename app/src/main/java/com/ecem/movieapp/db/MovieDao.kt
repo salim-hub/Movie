@@ -10,11 +10,15 @@ import com.ecem.movieapp.data.model.Movies
 interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveMovies(movies: Movies)
+    suspend fun saveNowPlayingMovies(movies: List<Movies>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveUpcomingMovies(movies: List<Movies>)
 
     @Query("SELECT * FROM movies")
-    fun getMovies(): List<Movies>
+    fun getNowPlayingMovies(): List<Movies>
 
-
+    @Query("SELECT * FROM movies")
+    fun getUpcomingMovies(): List<Movies>
 
 }

@@ -13,47 +13,46 @@
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="false"
-            tools:context=".ui.main.MainActivity">
+            android:fitsSystemWindows="false">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/viewPagerRL"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:background="#0000FF"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintDimensionRatio="H,360:256">
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:id="@+id/viewPagerRL"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:layout_marginStart="0dp"-->
+<!--                    android:layout_marginTop="0dp"-->
+<!--                    android:layout_marginEnd="0dp"-->
+<!--                    android:background="#0000FF"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintDimensionRatio="H,360:256">-->
 
-                    <androidx.viewpager2.widget.ViewPager2
-                        android:id="@+id/viewPager"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+<!--                    <androidx.viewpager2.widget.ViewPager2-->
+<!--                        android:id="@+id/viewPager"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent" />-->
 
-                    <me.relex.circleindicator.CircleIndicator3
-                        android:id="@+id/circleIndicator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="16dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="8dp"
-                        android:visibility="visible"
-                        app:ci_drawable="@drawable/selected_indicator"
-                        app:ci_drawable_unselected="@drawable/unselected_indicator"
-                        app:layout_constraintBottom_toBottomOf="@id/viewPager"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+<!--                    <me.relex.circleindicator.CircleIndicator3-->
+<!--                        android:id="@+id/circleIndicator"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="16dp"-->
+<!--                        android:layout_alignParentBottom="true"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:layout_marginBottom="8dp"-->
+<!--                        android:visibility="visible"-->
+<!--                        app:ci_drawable="@drawable/selected_indicator"-->
+<!--                        app:ci_drawable_unselected="@drawable/unselected_indicator"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@id/viewPager"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent" />-->
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view"
@@ -65,17 +64,16 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/viewPagerRL"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="36dp"
                     app:spanCount="1"
                     tools:listitem="@layout/item_movies"
                     android:focusable="true" />
 
                 <ProgressBar
                     android:id="@+id/progress"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:translationZ="90dp"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

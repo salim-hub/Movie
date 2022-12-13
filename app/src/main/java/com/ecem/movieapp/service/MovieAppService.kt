@@ -16,4 +16,5 @@ interface MovieAppService {
     suspend fun getUpcomingMovies(
         @Query("api_key") apiKey: String?
     ): Response<MoviesResponse>
+
 }

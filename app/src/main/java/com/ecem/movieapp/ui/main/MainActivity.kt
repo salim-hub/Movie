@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
 import com.ecem.movieapp.common.Constants.API_KEY
 import com.ecem.movieapp.common.Constants.EXTRA_MOVIE
 import com.ecem.movieapp.databinding.ActivityMainBinding
@@ -37,11 +36,11 @@ class MainActivity : AppCompatActivity(), RecyclerViewClickListener, ViewPagerCl
             recyclerView.apply {
                 adapter = movieAdapter
 
-                viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-                viewPager.adapter = sliderAdapter
-                val indicator = circleIndicator
-                indicator.setViewPager(viewPager)
-                sliderAdapter.registerAdapterDataObserver(indicator.adapterDataObserver)
+//                viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+//                viewPager.adapter = sliderAdapter
+//                val indicator = circleIndicator
+//                indicator.setViewPager(viewPager)
+//                sliderAdapter.registerAdapterDataObserver(indicator.adapterDataObserver)
             }
         }
 
@@ -68,23 +67,23 @@ class MainActivity : AppCompatActivity(), RecyclerViewClickListener, ViewPagerCl
 
 
         binding.swipeToRefresh.setOnRefreshListener {
-            observeUI()
+            observeSliderData()
             binding.swipeToRefresh.isRefreshing = false
         }
 
         movieViewModel.fetchUpcoming(API_KEY)
         movieViewModel.fetchNowPlaying(API_KEY)
-        observeUI()
-        observeSlider()
+        observeSliderData()
+        observeData()
     }
 
-    private fun observeUI() {
-        movieViewModel.upcomingMovies.observe(this) {
-            when (it) {
+    private fun observeData() {
+        movieViewModel.movieNowPlaying.observe(this) {
+            when(it) {
                 is Resource.Success -> {
                     binding.progress.visibility = View.GONE
                     val data = it.data!!.movies
-                    movieAdapter.submitList(data!!)
+                    sliderAdapter.submitList(data!!)
                 }
                 is Resource.Error -> {
                     binding.progress.visibility = View.GONE
@@ -99,13 +98,13 @@ class MainActivity : AppCompatActivity(), RecyclerViewClickListener, ViewPagerCl
         }
     }
 
-    private fun observeSlider() {
-        movieViewModel.movieNowPlaying.observe(this) {
-            when(it) {
+    private fun observeSliderData() {
+        movieViewModel.upcomingMovies.observe(this) {
+            when (it) {
                 is Resource.Success -> {
                     binding.progress.visibility = View.GONE
                     val data = it.data!!.movies
-                    sliderAdapter.submitList(data!!)
+                    movieAdapter.submitList(data!!)
                 }
                 is Resource.Error -> {
                     binding.progress.visibility = View.GONE

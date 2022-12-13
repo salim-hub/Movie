@@ -10,7 +10,7 @@ fun hasInternetConnection(context: Context): Boolean {
         Context.CONNECTIVITY_SERVICE
     ) as ConnectivityManager
 
-    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         val activeNetwork = connectivityManager.activeNetwork ?: return false
         val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
         return when{
@@ -20,7 +20,7 @@ fun hasInternetConnection(context: Context): Boolean {
             else -> false
         }
     }
-    else{
+    else {
         connectivityManager.activeNetworkInfo?.run {
             return when(type){
                 ConnectivityManager.TYPE_WIFI -> return true

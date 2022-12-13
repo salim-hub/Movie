@@ -59,9 +59,9 @@ class MovieAdapter(val context: Context, private val moviesRecyclerView: Recycle
     }
 
     fun addData(listItems: ArrayList<Movies>) {
-        var size = listItems.size
+        val size = listItems.size
         listItems.addAll(listItems)
-        var sizeNew = listItems.size
+        val sizeNew = listItems.size
         notifyItemRangeChanged(size, sizeNew)
     }
 }
