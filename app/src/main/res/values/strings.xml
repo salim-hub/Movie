@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MovieApp</string>
+    
+    <string name="rating_ten">%1$s/10</string>
+</resources>
